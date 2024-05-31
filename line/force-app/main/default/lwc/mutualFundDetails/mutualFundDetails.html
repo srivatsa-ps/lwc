@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Mutual Fund Details" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={record}>
+                <p><strong>Fund Name:</strong> {record.Name.value}</p>
+                <p><strong>Minimum SIP:</strong> {record.Minimum_SIP__c.value}</p>
+                <p><strong>Net Asset Value:</strong> {record.Net_Asset_Value__c.value}</p>
+                <p><strong>Total Invested Amount:</strong> {totalInvestedAmount}</p>
+
+                <lightning-input type="number" label="Buy Amount" value={buyAmount} onchange={handleAmountChange}></lightning-input>
+                
+                <div class="slds-grid slds-grid_align-center slds-m-top_medium">
+                    <lightning-button label="Buy" onclick={handleBuy} variant="brand" class="slds-m-right_small"></lightning-button>
+                    <lightning-button label="Sell" onclick={handleSell} variant="destructive"></lightning-button>
+                </div>
+
+                <lightning-button label={watchlistButtonConfig.label} 
+                                  onclick={handleAddToWatchlist} 
+                                  variant={watchlistButtonConfig.variant}>
+                </lightning-button>
+                
+                <template if:true={navData}>
+                    <canvas class="linechart" lwc:dom="manual"></canvas>
+                </template>
+            </template>
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error.body.message}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

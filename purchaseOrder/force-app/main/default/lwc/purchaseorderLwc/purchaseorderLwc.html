@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h2 class="slds-text-heading_medium">Create Purchase Order</h2>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium">
+                <template if:true={showBranchSelection}>
+                    <!-- Screen 1: Branch Selection -->
+                    <lightning-combobox
+                        label="Select Branch"
+                        options={branchOptions}
+                        onchange={handleBranchChange}
+                    ></lightning-combobox>
+                    <div class="slds-m-top_medium"></div> <!-- Gap above buttons -->
+                    <div class="slds-float_right">
+                        <lightning-button label="Cancel" onclick={handleCancel} variant="neutral"></lightning-button>
+                        &nbsp;&nbsp;
+                        <lightning-button label="Next" onclick={handleNext} disabled={nextDisabled}></lightning-button>
+                    </div>
+                </template>
+                <template if:true={showPurchaseOrderForm}>
+                    <!-- Screen 2: Purchase Order Form -->
+                    <lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
+                    <lightning-combobox
+                        label="Cost Center"
+                        options={costCenterOptions}
+                        onchange={handleCostCenterChange}
+                    ></lightning-combobox>
+                    <lightning-combobox
+                        label="Business Unit"
+                        options={businessUnitOptions}
+                        onchange={handleBusinessUnitChange}
+                    ></lightning-combobox>
+                    <div class="slds-m-top_medium"></div> <!-- Gap above buttons -->
+                    <div class="slds-clearfix">
+                        <lightning-button label="Previous" onclick={handlePrevious} variant="neutral"></lightning-button>
+                        <div class="slds-float_right">
+                            <lightning-button label="Cancel" onclick={handleCancel} variant="neutral"></lightning-button>
+                            &nbsp;&nbsp;
+                            <lightning-button label="Create Purchase Order" onclick={createPurchaseOrder}></lightning-button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

@@ -1,0 +1,22 @@
+.slds-tile__detail {
+    background-color: #f4f6f9;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slds-tile__detail p {
+    margin-bottom: 0.5rem;
+}
+
+.slds-text-heading_small {
+    font-weight: bold;
+}
+
+.slds-p-around_medium {
+    padding: 1rem;
+}
+
+.slds-p-around_small {
+    padding: 0.5rem;
+}

@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="My Watchlist " icon-name="standard:investment_account">
+        <div class="slds-p-around_medium">
+            <template if:true={funds}>
+                <div class="slds-grid slds-wrap">
+                    <template for:each={funds} for:item="fund">
+                        <div key={fund.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_small">
+                            <lightning-tile>
+                                <div class="slds-tile__detail">
+                                    <p class="slds-text-heading_small slds-truncate">{fund.Name}</p>
+                                    <p class="slds-text-body_regular slds-truncate">Minimum SIP: {fund.Minimum_SIP__c}</p>
+                                    <p class="slds-text-body_regular slds-truncate">Net Asset Value: {fund.Net_Asset_Value__c}</p>
+                                    <!-- Add more fields as needed -->
+                                </div>
+                            </lightning-tile>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <template if:true={error}>
+                <div class="slds-text-color_error slds-p-around_small">
+                    <p>Error fetching mutual funds: {error}</p>
+                </div>
+            </template>
+            <template if:true={isEmptyAndNoError}>
+                <div class="slds-text-align_center slds-p-around_small">
+                    <p>No mutual funds found in this watchlist.</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

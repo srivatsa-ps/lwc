@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Invoice List">
+        <div class="slds-m-around_medium">
+            <template if:true={invoices}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={invoices}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+            <template if:false={invoices}>
+                No invoices found.
+            </template>
+        </div>
+    </lightning-card>
+</template>

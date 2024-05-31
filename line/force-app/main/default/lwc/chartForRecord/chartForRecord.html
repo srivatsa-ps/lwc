@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="NAV Line Chart" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={navData}>
+                <canvas class="linechart" lwc:dom="manual"></canvas>
+            </template>
+            <template if:false={navData}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+        </div>
+    </lightning-card>
+</template>
